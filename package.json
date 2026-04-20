@@ -5,11 +5,10 @@
   "scripts": {
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "build": "tsc -p tsconfig.json",
-    "build:web": "rm -rf dist && tsc -p tsconfig.json && mkdir -p dist/styles && cp styles/ui.css dist/styles/ui.css && sed 's#./dist/app/main.js#./app/main.js#' index.html > dist/index.html",
+    "build:web": "rm -rf dist && tsc -p tsconfig.json && mkdir -p dist/styles && cp styles/ui.css dist/styles/ui.css && sed \"s#./dist/app/main.js#./app/main.js#\" index.html > dist/index.html",
     "vercel-build": "npm run build:web"
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
     "typescript": "^5.9.0"
   }
+}
