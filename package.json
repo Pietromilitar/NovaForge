@@ -1,0 +1,14 @@
+{
+  "name": "novaforge-engine",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "typecheck": "npx tsc -p tsconfig.json --noEmit",
+    "build": "npx tsc -p tsconfig.json",
+    "build:web": "node scripts/build-web.mjs",
+    "vercel-build": "npm run build:web"
+  },
+  "dependencies": {
+    "typescript": "^5.9.0"
+  }
+}
