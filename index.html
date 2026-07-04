@@ -3,19 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NovaForge Engine - NFX</title>
+    <title>JSON UI Maker - Arenas</title>
     <link rel="stylesheet" href="./styles/ui.css" />
   </head>
-  <body>
+  <body data-interface="1">
     <div id="app">
       <canvas id="nfx-canvas"></canvas>
-      <div class="hud">
-        <strong>NovaForge Engine</strong><br />
-        Arraste: orbitar câmera<br />
-        Scroll: zoom<br />
-        Tecla <b>F</b>: wireframe<br />
-        Tecla <b>L</b>: iluminação
-      </div>
+
+      <main class="menu-shell" aria-label="Menu principal">
+        <section class="menu-panel">
+          <div class="menu-actions" aria-label="Ações principais">
+            <button class="menu-button menu-button--primary" id="arenas-button" type="button">
+              Ir para as 5 arenas
+            </button>
+            <button class="menu-button menu-button--secondary" id="credits-button" type="button">
+              Créditos
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <dialog class="modal" id="arenas-modal" aria-labelledby="arenas-title">
+        <div class="modal-card">
+          <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+          <p class="menu-kicker">Arenas</p>
+          <h2 id="arenas-title">Seleção de arenas</h2>
+          <div class="arena-list">
+            <button class="arena-card arena-card--available" type="button">Arena 1 disponível</button>
+            <button class="arena-card" type="button" disabled>Arena 2 em breve</button>
+            <button class="arena-card" type="button" disabled>Arena 3 em breve</button>
+            <button class="arena-card" type="button" disabled>Arena 4 em breve</button>
+            <button class="arena-card" type="button" disabled>Arena 5 em breve</button>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="modal" id="credits-modal" aria-labelledby="credits-title">
+        <div class="modal-card">
+          <button class="modal-close" type="button" data-close-modal aria-label="Fechar">×</button>
+          <p class="menu-kicker">Créditos</p>
+          <h2 id="credits-title">Sua mensagem aqui</h2>
+          <p class="credits-message" id="credits-message">Edite este texto em <b>app/main.ts</b> para colocar a mensagem de créditos que você quiser.</p>
+        </div>
+      </dialog>
     </div>
 
     <script type="module" src="./dist/app/main.js"></script>

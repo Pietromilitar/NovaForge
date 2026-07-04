@@ -2,6 +2,41 @@ import { Camera } from '../core/Camera';
 import { Renderer } from '../core/Renderer';
 import { Scene } from '../core/Scene';
 import { NFXLoader } from '../loader/NFXLoader';
+const creditsMessage = 'Coloque aqui a mensagem de créditos que você quiser.';
+const interfaceVersion = new URLSearchParams(window.location.search).get('ui') ?? '1';
+const normalizedInterfaceVersion = ['1', '2', '3', '4', '5'].includes(interfaceVersion) ? interfaceVersion : '1';
+document.body.dataset.interface = normalizedInterfaceVersion;
+document.getElementById('credits-message')?.replaceChildren(creditsMessage);
+const openDialog = (dialogId) => {
+    const dialog = document.getElementById(dialogId);
+    if (!dialog)
+        return;
+    if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+        return;
+    }
+    dialog.setAttribute('open', 'true');
+};
+const closeDialog = (dialog) => {
+    dialog.close();
+};
+document.getElementById('arenas-button')?.addEventListener('click', () => openDialog('arenas-modal'));
+document.getElementById('credits-button')?.addEventListener('click', () => openDialog('credits-modal'));
+document.querySelectorAll('[data-close-modal]').forEach((button) => {
+    button.addEventListener('click', () => {
+        const dialog = button.closest('dialog');
+        if (dialog instanceof HTMLDialogElement) {
+            closeDialog(dialog);
+        }
+    });
+});
+document.querySelectorAll('dialog.modal').forEach((dialog) => {
+    dialog.addEventListener('click', (evt) => {
+        if (evt.target === dialog) {
+            closeDialog(dialog);
+        }
+    });
+});
 const canvas = document.getElementById('nfx-canvas');
 if (!canvas) {
     throw new Error('Canvas #nfx-canvas não encontrado.');
