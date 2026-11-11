@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#10131b"><title>WorldCanvas</title>
+</head>
+<body>
+  <header class="topbar"><div class="brand">World<span>Canvas</span></div><div class="top-actions"><button id="new-map">Novo mapa</button><button id="save-project">Salvar projeto</button><label class="file-button">Abrir projeto<input id="open-project" type="file" accept=".json,application/json"></label></div></header>
+  <main class="layout">
+    <aside class="panel tools"><h2>Ferramentas</h2><button class="tool active" data-tool="paint">Pincel de altura</button><button class="tool" data-tool="lower">Escavar</button><button class="tool" data-tool="smooth">Suavizar</button><label>Tamanho <input id="brush-size" type="range" min="1" max="32" value="4"></label><label>Força <input id="brush-strength" type="range" min="1" max="20" value="5"></label><div class="hint">Arraste no mapa para criar montanhas e vales. A altura é armazenada por célula.</div><hr><h2>Camadas</h2><div id="layers"></div><button id="add-layer">+ Nova camada</button><button id="rename-layer">Renomear</button><button id="toggle-layer">Mostrar/ocultar</button><button id="lock-layer">Bloquear/desbloquear</button><button id="merge-layer">Combinar com camada abaixo</button></aside>
+    <section class="workspace"><nav class="tabs"><button class="tab active" data-view="2d">Mapa 2D</button><button class="tab" data-view="3d">Relevo 3D</button></nav><div class="canvas-wrap" id="view-2d"><canvas id="map" width="160" height="160"></canvas></div><div class="canvas-wrap hidden" id="view-3d"><div id="terrain"></div></div><footer><span id="status">160 × 160 células</span><button id="export-png">Exportar PNG</button><button id="export-json">Exportar JSON</button></footer></section>
+    <aside class="panel library"><h2>Biblioteca de blocos</h2><input id="block-search" placeholder="Buscar bloco..."><div id="block-list"></div><p class="hint">Catálogo inicial ilustrativo. Para incluir o catálogo completo, escolha a versão exata do Bedrock e carregue os pacotes de recursos correspondentes.</p><label class="file-button full">Importar .mcaddon / .mcpack<input id="addon-file" type="file" accept=".mcaddon,.mcpack,.zip"></label><p id="addon-status" class="hint">A leitura de pacotes ainda não está implementada.</p></aside>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body></html>
